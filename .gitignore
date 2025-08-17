@@ -17,3 +17,103 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+
+# ------------------
+# Python cache files
+# ------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ------------------
+# Virtual environments
+# ------------------
+venv/
+env/
+.venv/
+ENV/
+
+# ------------------
+# Jupyter & notebooks
+# ------------------
+.ipynb_checkpoints
+*.ipynb_convert
+*.nbconvert.ipynb
+
+# ------------------
+# Logs & debug
+# ------------------
+logs/
+*.log
+
+# ------------------
+# IDE & editor settings
+# ------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------
+# Flask specific
+# ------------------
+instance/
+*.db
+*.sqlite3
+*.sqlite
+
+# ------------------
+# Environment & config
+# ------------------
+.env
+*.env
+config.json
+secret.json
+
+# ------------------
+# Model artifacts
+# ------------------
+models/
+checkpoints/
+*.h5
+*.hdf5
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.joblib
+*.pkl
+
+# ------------------
+# Data (optional, ignore if dataset is large)
+# ------------------
+data/
+*.csv
+*.tsv
+*.parquet
+*.npy
+*.npz
+
+# ------------------
+# Build & packaging
+# ------------------
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# ------------------
+# OS specific
+# ------------------
+.DS_Store
+Thumbs.db
