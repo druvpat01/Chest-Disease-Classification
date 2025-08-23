@@ -2,6 +2,7 @@ from classifier import logger
 from classifier.config.configuration import ConfigManager
 from classifier.components.data_ingestion import DataIngestion
 
+STAGE_NAME = 'Data Ingestion Stage'
 
 class DataIngestionTrainingPipeline:
     def __init__(self):
@@ -18,3 +19,15 @@ class DataIngestionTrainingPipeline:
         # downloading the dataset
         data_ingestion.download_file()      # downloads the zipfile from the url
         data_ingestion.extract_zip_file()   # unzips the downloaded dataset zipfile 
+
+
+if __name__ == "__main__":        
+    try:
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+        obj = DataIngestionTrainingPipeline()
+        obj.main()
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
+        
+    except Exception as e:
+        logger.exception(e)
+        raise e 

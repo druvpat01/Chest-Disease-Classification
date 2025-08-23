@@ -21,6 +21,9 @@ setuptools.setup(
     project_urls={
         'Bug Tracker': f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues"
     },
-    package_dir={"": 'src'},
-    packages=setuptools.find_packages(where='src')
+    package_dir={"": 'src'},    # states that root -> "" is 'src'
+    packages=setuptools.find_packages(where='src')  # automatatically detects all packages in 'src' using the folders with __init__.py 
 )
+
+
+# run command 'pip install -e .' for the setup.py
