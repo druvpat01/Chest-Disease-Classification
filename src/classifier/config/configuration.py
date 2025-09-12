@@ -4,7 +4,8 @@ from classifier.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from classifier.utils.utils import read_yaml, create_directories
 from classifier.entity.config_entity import (DataIngestionConfig, 
                                              PrepareBaseModelConfig, 
-                                             TrainingConfig)
+                                             TrainingConfig,
+                                             EvaluationConfig)
 
 
 class ConfigManager():
@@ -50,7 +51,7 @@ class ConfigManager():
 
         return prepare_base_model_config
     
-    def get_training_config(self):
+    def get_training_config(self)-> TrainingConfig:
         training = self.config.training
         prepare_base_config = self.config.prepare_base_model
 
@@ -70,4 +71,14 @@ class ConfigManager():
             params_is_augmentation=self.params.AUGMENTATION
         )
 
-        return training_config
+        return training_config  
+
+    def get_evaluation_config(self)-> EvaluationConfig:
+        return EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/Chest-CT-Scan-data",
+            mlflow_uri="",
+            all_paramas=self.params,
+            params_img_size=self.params.IMAGE_SIZE,
+            param_batch_size=self.params.BATCH_SIZE,
+        )

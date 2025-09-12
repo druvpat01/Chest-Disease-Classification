@@ -1,8 +1,12 @@
 from classifier.pipeline.stage01_data_ingestion import DataIngestionTrainingPipeline
-from classifier import logger 
 from classifier.pipeline.stage02_prepare_base_model import PrepareBaseModelTrainingPipeline
+from classifier.pipeline.stage03_model_trainer import ModelTrainingPipeline
+from classifier import logger 
 
+import warnings
+warnings.filterwarnings('ignore')
 
+# Data Ingestion Pipeline
 # STAGE_NAME = "Data Ingestion Stage"
      
 # try:
@@ -16,16 +20,31 @@ from classifier.pipeline.stage02_prepare_base_model import PrepareBaseModelTrain
 #     raise e 
 
 
-STAGE_NAME = "Prepare base model"
+# # Preparing the Base Model
+# STAGE_NAME = "Prepare base model"
+
+# try:
+#     logger.info(f"************************************")
+#     logger.info(f">>>>>>> STAGE {STAGE_NAME} STARTED <<<<<<<")
+
+#     prepare_base_model = PrepareBaseModelTrainingPipeline()
+#     prepare_base_model.main()
+
+#     logger.info(f">>>>>> STAGE {STAGE_NAME} COMPLETED <<<<<<")
+# except Exception as e:
+#     logger.exception(e)
+#     raise e
+
+
+
+# Training the model
+STAGE_NAME = "Training"
 
 try:
-        logger.info(f"************************************")
-        logger.info(f">>>>>>> STAGE {STAGE_NAME} STARTED <<<<<<<")
-
-        obj = PrepareBaseModelTrainingPipeline()
-        obj.main()
-
-        logger.info(f">>>>>> STAGE {STAGE_NAME} COMPLETED <<<<<<")
+    logger.info(F">>>>>> STAGE {STAGE_NAME} started <<<<<<")
+    model_trainer = ModelTrainingPipeline()
+    model_trainer.main()
+    logger.info(f">>>>>> STAGE {STAGE_NAME} completed <<<<<<")
 except Exception as e:
     logger.exception(e)
-    raise e
+    raise

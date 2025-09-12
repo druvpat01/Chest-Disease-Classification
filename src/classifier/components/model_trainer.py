@@ -1,10 +1,17 @@
 from pathlib import Path
 from classifier.entity.config_entity import TrainingConfig
 import tensorflow as tf
+from classifier import logger
 
 
 class Training:
     def __init__(self, config: TrainingConfig):
+            
+        logger.info(f"Eagaer Execution Enabled: {tf.executing_eagerly()}")
+        if not tf.executing_eagerly():
+            logger.warning("Eager Execution in tensorflow is disabled by default.")
+            tf.config.run_functions_eagerly(True)
+            logger.info("Eager Execution Enabled in tensorflow")
         self.config = config
 
     def get_base_model(self):
@@ -38,7 +45,7 @@ class Training:
                 width_shift_range=0.2,
                 height_shift_range=0.2,
                 shear_range=0.2,
-                zoom_range=0.2
+                zoom_range=0.2,
                 **datagenerator_kwargs
             ) 
         else:

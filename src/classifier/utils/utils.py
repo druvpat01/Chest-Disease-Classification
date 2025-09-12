@@ -19,7 +19,7 @@ def read_yaml(path_to_yaml: Path)-> ConfigBox:
         Args:
             path_to_yaml (str): path to the yaml file
         Returns:
-            ConfigBox 
+            ConfigBox   // Using the Config Box so we can access     values like object attributes, not just dictionary keys.
     """
     try:
         with open(path_to_yaml) as yaml_file:
