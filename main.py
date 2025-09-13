@@ -1,6 +1,7 @@
 from classifier.pipeline.stage01_data_ingestion import DataIngestionTrainingPipeline
 from classifier.pipeline.stage02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from classifier.pipeline.stage03_model_trainer import ModelTrainingPipeline
+from classifier.pipeline.stage04_evaluation import EvaluationPipeline
 from classifier import logger 
 
 import warnings
@@ -48,3 +49,18 @@ try:
 except Exception as e:
     logger.exception(e)
     raise
+
+
+# Evaluating the results
+STAGE_NAME = "Evaluation Pipeline"
+
+try:
+    logger.info(f">>>>>> {STAGE_NAME} started <<<<<<")
+
+    obj = EvaluationPipeline()
+    obj.main()
+
+    logger.info(f">>>>>> {STAGE_NAME} Completed <<<<<<")
+except Exception as e:
+    logger.exception(e)
+    raise e
